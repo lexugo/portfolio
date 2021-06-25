@@ -1,0 +1,20 @@
+{
+  "name": "lexugo",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "10.x",
+    "react": "17.x",
+    "react-dom": "17.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexugo/portfolio.git"
+  },
+  "author": "Hugo Laquerre"
+}
