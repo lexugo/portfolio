@@ -1,0 +1,6 @@
+export default (_, res) => {
+  res.status(200).json({
+    status: 'Okok',
+    timestamp: Date.now()
+  })
+}
