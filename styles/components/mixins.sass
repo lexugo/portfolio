@@ -1,0 +1,22 @@
+@import 'variables'
+
+// Responsiveness
+=mobile
+  @media screen and (max-width: $tablet - 1px)
+    @content
+
+=tablet
+  @media screen and (min-width: $tablet)
+    @content
+
+=desktop
+  @media screen and (min-width: $desktop)
+    @content
+
+=widescreen
+  @media screen and (min-width: $widescreen)
+    @content
+
+=fullscreen
+  @media screen and (min-width: $fullscreen)
+    @content
