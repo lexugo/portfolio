@@ -4,8 +4,8 @@ function Welcome() {
     return (
         <div className="welcome">
             <div className="signature"> 
-                <h2 className="name">Hugo Laquerre</h2>
-                <h3 className="title">Full-Stack developer</h3>
+                <h2 className="name">Hugo</h2>
+                <h3 className="title">Web developer</h3>
             </div>
             <div className="introduction">
                 <p>I make interfaces, shape brands and build digital products. Basically; I create, break and fix things, wrangle with code and design stuff.</p>
