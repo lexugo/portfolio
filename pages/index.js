@@ -1,20 +1,11 @@
-import { memo } from 'react'
+import Signature from 'components/signature'
 
 function Welcome() {
     return (
-        <div className="welcome">
-            <div className="signature"> 
-                <h2 className="name">Hugo</h2>
-                <h3 className="title">Web developer</h3>
-            </div>
-            <div className="introduction">
-                <p>I make interfaces, shape brands and build digital products. Basically; I create, break and fix things, wrangle with code and design stuff.</p>
-            </div>
-            <div className="contact">
-                <a href="mailto:hireme@lexugo.ca">Let's work together!</a>
-            </div>
-        </div>
+        <header>
+            <Signature />
+        </header>
     )
 }
 
-export default memo(Welcome)
+export default Welcome
