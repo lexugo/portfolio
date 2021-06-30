@@ -1,13 +1,7 @@
-import Signature from 'components/signature'
-import Contact from 'components/contact'
+import Error from "pages/_error"
 
 function Welcome() {
-    return (
-        <header>
-            <Signature />
-            <Contact />
-        </header>
-    )
+    return <Error title="This page is under development." />
 }
 
 export default Welcome
