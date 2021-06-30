@@ -10,6 +10,10 @@ body // root
     display: flex
     justify-content: center
 
+    color: white
+    font-family: 'Montserrat', sans-serif
+    font-size: .9em
+    letter-spacing: .03em
     background-color: black
 
 #__next // app
@@ -17,12 +21,26 @@ body // root
     max-width: 1040px
     margin: 3em
 
-header
-    color: white
-    font-family: 'Montserrat', sans-serif
-    font-size: .9em
-    letter-spacing: .03em
+    display: grid
+    grid-template-rows: 1fr auto 1fr
 
+.error
+    place-self: center
+    display: flex
+    align-items: baseline
+    gap: 2em
+
+    .code
+        font-size: 1.5em
+        font-weight: 800
+        color: white
+        
+    .details
+        font-size: 1em
+        font-weight: 400
+        color: $faded  
+
+header
     display: flex
     justify-content: space-between
 
