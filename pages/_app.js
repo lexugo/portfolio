@@ -8,9 +8,11 @@ export default function Layout({ Component, pagePros: props }) {
         <>
             <header>
                 <Signature />
-                <Contact />
             </header>
             <Component {...props} />
+            <footer>
+                <Contact />
+            </footer>
         </>
     )
 }
