@@ -76,15 +76,13 @@ body // root
             margin-right: .3em
 
 .contact 
-    display: flex
-    flex-direction: column
-    gap: 2em
-
-    text-align: center
+    display: none
 
     +tablet
+        display: flex
         flex-direction: row
         text-align: left
+        gap: 2.5em
 
     h3
         font-weight: 500
@@ -107,3 +105,36 @@ a
 
     &:hover
         color: white
+
+.welcome
+    // text-align: center
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    font-size: 1em
+    text-transform: uppercase
+    text-align: center
+
+    min-height: 70vh
+    .greeting
+        max-width: 80vw
+
+    h1
+        font-size: 5em
+        letter-spacing: .04em
+        margin: 1rem
+        font-weight: 800
+        background: -webkit-linear-gradient($blue, $purple)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+
+        +tablet
+            font-size: 8em
+
+    h2
+        padding-left: .3em
+        font-size: 1em
+
+        +tablet
+            font-size: 1.1em

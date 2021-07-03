@@ -1,7 +1,14 @@
 import Error from "pages/_error"
 
 function Welcome() {
-    return <Error title="This page is under development." />
+    return (
+        <main className="welcome">
+            <div className="greeting">
+                <h1>Hello;</h1>
+                <h2>I'm Hugo. Full-Stack software engineer at Ubisoft.</h2>
+            </div>
+        </main>
+    )
 }
 
 export default Welcome
