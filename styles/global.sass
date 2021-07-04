@@ -22,7 +22,7 @@ body // root
     margin: 3em
 
     display: grid
-    grid-template: min-content auto min-content / auto auto
+    grid-template: min-content auto / auto auto
     gap: 1em
 
     header
@@ -34,16 +34,17 @@ body // root
         grid-row: 2 / 3
     
     footer
-        grid-column: 1 / 3
-        grid-row: 3 / 4
-        align-self: end
-        justify-self: center
+        grid-column: 2 / 3
+        grid-row: 1 / 2   
+        justify-self: end
 
+        visibility: hidden
+        opacity: 0
+        transition: visibility .3s, opacity 0.3s ease-in-out
         +tablet
-            grid-column: 2 / 3
-            grid-row: 1 / 2   
-            align-self: start 
-            justify-self: end   
+            opacity: 1
+            visibility: visible
+ 
 
 .error
     place-self: center
@@ -76,13 +77,10 @@ body // root
             margin-right: .3em
 
 .contact 
-    display: none
-
-    +tablet
-        display: flex
-        flex-direction: row
-        text-align: left
-        gap: 2.5em
+    display: flex
+    flex-direction: row
+    text-align: left
+    gap: 2.5em
 
     h3
         font-weight: 500
@@ -116,25 +114,17 @@ a
     text-transform: uppercase
     text-align: center
 
-    min-height: 70vh
-    .greeting
-        max-width: 80vw
-
     h1
-        font-size: 5em
+        font-size: clamp(5em, 11vw, 10em)
         letter-spacing: .04em
-        margin: 1rem
         font-weight: 800
         background: -webkit-linear-gradient($blue, $purple)
         -webkit-background-clip: text
         -webkit-text-fill-color: transparent
 
-        +tablet
-            font-size: 8em
-
     h2
-        padding-left: .3em
         font-size: 1em
+        margin: 1em 3em
 
         +tablet
             font-size: 1.1em
