@@ -1,6 +1,12 @@
 {
   "name": "Lexugo",
   "short_name": "Lexugo",
+  "theme_color": "#9749eb",
+  "background_color": "#000",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "icons/launcher-192.png",
@@ -13,9 +19,5 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
-  "start_url": "/",
-  "display": "standalone",
-  "orientation": "portrait"
+  "splash_pages": null
 }
