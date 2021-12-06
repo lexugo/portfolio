@@ -3,7 +3,7 @@ import { Client } from '@notionhq/client'
 const notion = new Client({ auth: process.env.NOTION_TOKEN })
 const database = process.env.NOTION_TASKS_ID
 
-export async function test() {
+export async function tasks() {
 	try {
 		const response = await notion.databases.query({
 			database_id: database,
@@ -18,30 +18,39 @@ export async function test() {
 					select: {
 						does_not_equal: 'Complétée'
 					}
+				}, {
+					property: 'Status',
+					select: {
+						is_not_empty: true
+					}
 				}]
 			}
 		});
 
-		console.log('Successfully queried the database')
-		return tasks(response.results)
+		return normalized(response.results)
 	}
 	catch (error) {
-		console.log('Failed to query the database')
 		return error
 	}
 }
 
 const title = ({ properties: { Name: name } }) => name.title[0].text.content
 const select = property => ({ properties: { [property]: { select }}}) => select ? select.name : undefined
-function tasks(results) {
+const number = property => ({ properties: { [property]: { number }}}) => number ?? undefined
+function normalized(tasks) {
 	const status = select('Status'),
-		  priority = select('Priorité')
+		  priority = select('Priorité'),
+		  todoist = number('Todoist')
 
-	return results.map(task => ({
+	console.log(tasks[0])
+	return tasks.map(task => ({
 		id: task.id,
-		url: task.url,
+		todoist: todoist(task),
+		// url: task.url,
 		title: title(task),
 		status: status(task),
 		priority: priority(task),
 	}))
 }
+
+export default notion

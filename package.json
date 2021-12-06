@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@doist/todoist-api-typescript": "^1.5.0",
     "@notionhq/client": "^0.4.9",
     "next": "10.x",
     "react": "17.x",
