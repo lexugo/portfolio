@@ -13,6 +13,7 @@ export async function getRecentTracks(user, limit = 3) {
 	const tracks = await get('user.getrecenttracks', { user, limit })
 
 	return tracks?.recenttracks?.track.map(track => ({
+		id: track.mbid,
 		title: track.name,
 		artist: track.artist['#text'],
 		playing: !!track['@attr']?.nowplaying,

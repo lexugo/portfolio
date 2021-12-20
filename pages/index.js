@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Listening from 'components/listening'
 
+import useListening from 'hooks/useListening'
+
 import getListening from 'services/music'
 
-export default function Welcome({ listening }) {
+export default function Welcome({ track }) {
+    const listening = useListening(track)
+
     return (
         <main className="welcome">
             <Head>
@@ -20,11 +24,11 @@ export default function Welcome({ listening }) {
 }
 
 export async function getStaticProps() {
-    const listening = await getListening()
+    const track = await getListening()
     // Todo: Error handling
 
     return {
-        props: { listening },
+        props: { track },
         revalidate: 60,
     }
 }
