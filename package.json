@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "secrets": "vercel env pull .env.local"
   },
   "dependencies": {
     "next": "10.x",
