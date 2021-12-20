@@ -1,7 +1,9 @@
+import { LASTFM_USER as user, LASTFM_API_KEY as key } from 'services/secrets'
+
 const root = 'https://ws.audioscrobbler.com/2.0/'
 
 /** My Last.fm username. */
-export const user = process.env.LASTFM_USER
+export { user }
 
 /**
  * Get a list of the recent tracks listened to by this user.
@@ -19,7 +21,6 @@ export async function getRecentTracks(user, limit = 3) {
 }
 
 async function get(method, params, format = 'json') {
-	const key = process.env.LASTFM_API_KEY
 	const query = Object.entries(params).reduce((q, [param, value]) => `${q}&${param}=${value ?? ''}`, '')
 
 	const response = await fetch(`${root}?method=${method}&api_key=${key}${query}&format=${format}`)
