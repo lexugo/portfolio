@@ -1,16 +1,10 @@
-import { useState } from 'react'
-import useInterval from 'hooks/useInterval'
+import useEndpoint from './useEndpoint'
 
 export default function useListening(defaultValue) {
-  const [listening, setListening] = useState(defaultValue)
+	const { data, error } = useEndpoint('listening', {
+		fallback: defaultValue,
+		interval: 60 * 1000
+	})
 
-  useInterval(async () => {
-    const response = await fetch('/api/listening')
-    const track = await response.json() // Handle response code
-
-    if (track.id !== listening.id)
-      setListening(track)
-  }, 60 * 1000)
-
-  return listening
+	return data // TODO: Error handling
 }
