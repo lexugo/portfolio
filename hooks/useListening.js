@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import useInterval from 'hooks/useInterval'
 
-export default function useListening(defaultValue = undefined) {
+export default function useListening(defaultValue) {
   const [listening, setListening] = useState(defaultValue)
 
   useInterval(async () => {

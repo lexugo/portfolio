@@ -10,14 +10,17 @@ export { user }
  * See the [Official documentation]{@link https://www.last.fm/api/show/user.getRecentTracks}.
  */
 export async function getRecentTracks(user, limit = 3) {
-	const tracks = await get('user.getrecenttracks', { user, limit })
+	const tracks = await get('user.getrecenttracks', { user, limit, extended: 1 })
 
 	return tracks?.recenttracks?.track.map(track => ({
 		id: track.mbid,
-		title: track.name,
-		artist: track.artist['#text'],
+		title: track.name.replace(/ *\([^)]*\) */g, ''),
+		artist: {
+			name: track.artist.name,
+			url: track.artist.url,
+		},
 		playing: !!track['@attr']?.nowplaying,
-		url: track.url,
+		url: track.url
 	}))
 }
 
@@ -25,7 +28,9 @@ async function get(method, params, format = 'json') {
 	const query = Object.entries(params).reduce((q, [param, value]) => `${q}&${param}=${value ?? ''}`, '')
 
 	const response = await fetch(`${root}?method=${method}&api_key=${key}${query}&format=${format}`)
-	// Todo: handle errors
 
-	return await response.json()
+	// Todo: handle errors
+	const data = await response.json()
+
+	return data
 }

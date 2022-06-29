@@ -1,12 +1,16 @@
-import Track from 'components/track'
+import useListening from 'hooks/useListening'
 
-export default function Listening({ title, artist, url, playing }) {
-	const header = playing
-		? "I'm currently listening to " // Todo: Handle noscript
-		: "I was listening to "
+export default function Listening({ track }) {
+	const { title, artist, url, playing } = useListening(track)
+
 	return (
-		<div className='music'>
-			<h3>{ header } <Track title={title} artist={artist} url={url} /></h3>
-		</div>
+		<h3 className='music taste'>
+			 { playing ? "I'm currently listening to " : "I was listening to " }
+			 <span className='track'>
+				{ url ? <a href={url} target='_blank' className='title'>{ title }</a> : title }
+				{ ' by ' }
+				{ artist.url ? <a href={artist.url} target='_blank' className='artist'>{ artist.name }</a> : artist.name }
+			 </span>.
+		</h3>
 	)
 }
