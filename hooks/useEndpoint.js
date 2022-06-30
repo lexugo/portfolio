@@ -5,21 +5,23 @@ async function fetcher(endpoint) {
 
 	const response = await fetch(path)
 	if (!response.ok) {
-		const error = new Error(`${response.status}: ${response.statusText}`)
-
+		const error = new Error(`Failed to fetch ${path}: ${response.status} ${response.statusText}`)
 		error.status = response.status
-		error.info = await response.json()
+		error.response = response
+
 		throw error
 	}
 
 	return await response.json()
 }
 
-export default function useEndpoint(endpoint, { interval, fallback, ...options }) {
-	return useSWR(endpoint, fetcher, {
-		suspense: true,
+export default function useEndpoint(endpoint, { interval, fallback, ...config }) {
+	const { data } = useSWR(endpoint, fetcher, {
 		refreshInterval: interval, // syntax candy
 		fallbackData: fallback,
-		...options
+		...config,
+		suspense: true // may not change during lifecycle
 	})
+
+	return data
 }

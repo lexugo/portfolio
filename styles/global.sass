@@ -105,7 +105,6 @@ a
         color: white
 
 .welcome
-    // text-align: center
     display: flex
     flex-direction: column
     justify-content: center
@@ -123,17 +122,10 @@ a
         -webkit-text-fill-color: transparent
 
     .bio
+        display: flex
+        flex-direction: column
+        gap: .5em
         margin: 1em 3em
-        line-height: 1.3em
-
-    h2,
-    h3
-        font-size: 1em
-        margin: 0 .2em
-        display: inline
-
-        +tablet
-            font-size: 1.1em
 
         a
             color: $purple
@@ -141,8 +133,14 @@ a
             &:hover
                 color: white
 
-.music
-    h3::before,
-    h3::after
-        content: "♪"
-        margin: .5em
+        h2,
+        p
+            font-size: 1em
+            font-weight: 600
+            line-height: 1.3em
+
+            +tablet
+                font-size: 1.1em
+
+        span:before
+            content: ' '
