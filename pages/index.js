@@ -17,10 +17,10 @@ export default function Welcome({ listening }) {
 			</div>
 			<div className='bio'>
 				<h2>I'm Hugo. Full-Stack software engineer at <a href="https://www.cirquedusoleil.com/" target="_blank">Cirque&nbsp;du&nbsp;Soleil</a>.</h2>
-				<p className='music taste'>
+				<h3 className='music taste'>
 					I love music and would definitely recommend tuning in to <a href='https://cism893.ca/' target='_blank' >CISM</a> or <a href='https://www.byte.fm/' target='_blank' >Byte.fm</a> radio.
 					<Panic><Listening {...listening} /></Panic>
-				</p>
+				</h3>
 			</div>
 		</main>
     )
