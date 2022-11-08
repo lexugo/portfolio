@@ -1,0 +1,44 @@
+@function romanize($value)
+	@if $value >= 1000
+		@return repeat('M', $value / 1000)
+	@else if $value >= 900
+		@return 'CM' + romanize($value - 900)
+	@else if $value >= 500
+		@return 'D' + romanize($value - 500)
+	@else if $value >= 400
+		@return 'CD' + romanize($value - 400)
+	@else if $value >= 100
+		@return 'C' + romanize($value - 100)
+	@else if $value >= 90
+		@return 'XC' + romanize($value - 90)
+	@else if $value >= 50
+		@return 'L' + romanize($value - 50)
+	@else if $value >= 40
+		@return 'XL' + romanize($value - 40)
+	@else if $value >= 10
+		@return 'X' + romanize($value - 10)
+	@else if $value >= 9
+		@return 'IX' + romanize($value - 9)
+	@else if $value >= 5
+		@return 'V' + romanize($value - 5)
+	@else if $value >= 4
+		@return 'IV' + romanize($value - 4)
+	@else if $value >= 1
+		@return repeat('I', $value)
+	@return ''
+
+@function repeat($string, $times)
+	$repeated: ''
+	@for $i from 1 through $times
+		$repeated: $repeated + $string
+	@return $repeated
+
+@for $i from 0 through 9
+	@keyframes bars-#{$i}
+		@for $j from 0 through 100
+			#{$j}%
+				content: '#{romanize(min($i * 100 + $j + 1, 1000))}'
+
+@mixin bars
+	animation: 100s bars-0 1 linear, 100s bars-1 1 linear, 100s bars-2 1 linear, 100s bars-3 1 linear, 100s bars-4 1 linear, 100s bars-5 1 linear, 100s bars-6 1 linear, 100s bars-7 1 linear, 100s bars-8 1 linear, 100s bars-9 1 linear
+	animation-delay: 0s, 100s, 200s, 300s, 400s, 500s, 600s, 700s, 800s, 900s

@@ -6,9 +6,9 @@ import Contact from 'components/contact'
 export default function Layout({ Component, pageProps: props }) {
     return (
         <>
-            <header>
-                <Signature />
-            </header>
+            {/*<header>*/}
+            {/*    <Signature />*/}
+            {/*</header>*/}
             <Component {...props} />
             <footer>
                 <Contact />

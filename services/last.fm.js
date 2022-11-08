@@ -27,7 +27,9 @@ export async function getRecentTracks(user, limit = 3) {
 async function get(method, params, format = 'json') {
 	const query = Object.entries(params).reduce((q, [param, value]) => `${q}&${param}=${value ?? ''}`, '')
 
-	const response = await fetch(`${root}?method=${method}&api_key=${key}${query}&format=${format}`)
+	const response = await fetch(
+		`${root}?method=${method}&api_key=${key}${query}&format=${format}`,
+		{ next: { revalidate: 60 }})
 
 	// Todo: handle errors
 	const data = await response.json()
